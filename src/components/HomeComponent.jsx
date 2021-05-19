@@ -138,7 +138,10 @@ export default class HomeComponent extends Component {
           }}
         >
           <button
-            className="btn rounded-0 border"
+            style={{
+              backgroundColor: "black"
+            }}
+            className="rounded-0 text-light border p-3"
             disabled={!this.state.BoardConfig.enableVerticalMovement}
             onClick={() => {
               this.setDirection(-1, 0);
@@ -158,7 +161,10 @@ export default class HomeComponent extends Component {
           }}
         >
           <button
-            className="btn rounded-0 border"
+            style={{
+              backgroundColor: "black"
+            }}
+            className="rounded-0 text-light border p-3"
             disabled={this.state.BoardConfig.enableVerticalMovement}
             onClick={() => {
               this.setDirection(0, -1);
@@ -168,7 +174,10 @@ export default class HomeComponent extends Component {
             ←{" "}
           </button>
           <button
-            className="btn rounded-0 border"
+            style={{
+              backgroundColor: "black"
+            }}
+            className="rounded-0 text-light border p-3"
             disabled={!this.state.BoardConfig.enableVerticalMovement}
             onClick={() => {
               this.setDirection(1, 0);
@@ -178,7 +187,10 @@ export default class HomeComponent extends Component {
             ↓{" "}
           </button>
           <button
-            className="btn rounded-0 border"
+            style={{
+              backgroundColor: "black"
+            }}
+            className="rounded-0 text-light border p-3"
             disabled={this.state.BoardConfig.enableVerticalMovement}
             onClick={() => {
               this.setDirection(0, 1);
