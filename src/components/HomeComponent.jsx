@@ -121,8 +121,8 @@ export default class HomeComponent extends Component {
           >
             RESET
           </button>
-          <br />
         </div>
+        <br />
         <GridComponent
           food={this.state.food}
           cellSize={this.state.cellSize}
