@@ -4,6 +4,12 @@ import gridNode from "./GridNode";
 import GridComponent from "./GridComponent";
 
 export default class HomeComponent extends Component {
+  constructor(){
+    super()
+    this.direction = [0,1]
+    this.enableVerticalMovement = true
+  }
+  
   state = {
     grid: [],
     gridSize: Math.floor(
@@ -31,8 +37,7 @@ export default class HomeComponent extends Component {
       grid: [...grid],
       food: [...this.newGridFood(0, 0, grid)],
       end: false,
-      snakeBody: [[0, 0]],
-      BoardConfig: { direction: [0, 1], enableVerticalMovement: true }
+      snakeBody: [[0, 0]]
     });
   };
 
@@ -45,9 +50,9 @@ export default class HomeComponent extends Component {
   };
 
   moveSnake = () => {
-    let { grid, snakeBody, BoardConfig, food } = this.state;
+    let { grid, snakeBody, food } = this.state;
     let newGrid = [...grid];
-    let { direction } = BoardConfig;
+    let direction = this.direction;
     let setNewFood = false;
 
     let head = snakeBody[snakeBody.length - 1];
@@ -92,9 +97,8 @@ export default class HomeComponent extends Component {
   };
 
   setDirection = (rowInc, colInc) => {
-    let { BoardConfig } = this.state;
-    BoardConfig.direction = [rowInc, colInc];
-    BoardConfig.enableVerticalMovement = !BoardConfig.enableVerticalMovement;
+    this.direction = [rowInc, colInc];
+    this.enableVerticalMovement = !this.enableVerticalMovement;
   };
 
   render() {
@@ -142,7 +146,7 @@ export default class HomeComponent extends Component {
               backgroundColor: "black"
             }}
             className="rounded-0 text-light border p-3"
-            disabled={!this.state.BoardConfig.enableVerticalMovement}
+            disabled={!this.enableVerticalMovement}
             onClick={() => {
               this.setDirection(-1, 0);
             }}
@@ -165,7 +169,7 @@ export default class HomeComponent extends Component {
               backgroundColor: "black"
             }}
             className="rounded-0 text-light border p-3"
-            disabled={this.state.BoardConfig.enableVerticalMovement}
+            disabled={this.enableVerticalMovement}
             onClick={() => {
               this.setDirection(0, -1);
             }}
@@ -178,7 +182,7 @@ export default class HomeComponent extends Component {
               backgroundColor: "black"
             }}
             className="rounded-0 text-light border p-3"
-            disabled={!this.state.BoardConfig.enableVerticalMovement}
+            disabled={!this.enableVerticalMovement}
             onClick={() => {
               this.setDirection(1, 0);
             }}
@@ -191,7 +195,7 @@ export default class HomeComponent extends Component {
               backgroundColor: "black"
             }}
             className="rounded-0 text-light border p-3"
-            disabled={this.state.BoardConfig.enableVerticalMovement}
+            disabled={this.enableVerticalMovement}
             onClick={() => {
               this.setDirection(0, 1);
             }}
