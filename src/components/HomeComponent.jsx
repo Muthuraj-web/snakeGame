@@ -32,7 +32,9 @@ export default class HomeComponent extends Component {
       grid.push(rowArr);
     }
     grid[0][0].isSnake = true;
-
+    
+    this.direction = [0,1]
+    
     this.setState({
       grid: [...grid],
       food: [...this.newGridFood(0, 0, grid)],
